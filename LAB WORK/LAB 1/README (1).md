@@ -1,0 +1,66 @@
+# Heap Sort
+
+Heap sort is a comparison-based sorting technique based on Binary Heap Data Structure. It can be seen as an optimization over selection sort where we first find the max (or min) element and swap it with the last (or first). We repeat the same process for the remaining elements. In Heap Sort, we use Binary Heap so that we can quickly find and move the max element in O(Log n) instead of O(n) and hence achieve the O(n Log n) time complexity.
+
+
+
+
+
+
+# Heap Sort Algorithm
+
+First convert the array into a max heap using heapify, Please note that this happens in-place. The array elements are re-arranged to follow heap properties. Then one by one delete the root node of the Max-heap and replace it with the last node and heapify. Repeat this process while size of heap is greater than 1.
+
+Rearrange array elements so that they form a Max Heap.
+Repeat the following steps until the heap contains only one element:
+Swap the root element of the heap (which is the largest element in current heap) with the last element of the heap.
+Remove the last element of the heap (which is now in the correct position). We mainly reduce heap size and do not remove element from the actual array.
+Heapify the remaining elements of the heap.
+Finally we get sorted array.
+
+
+
+#  Detailed Working of Heap Sort
+
+## Step 1: Treat the Array as a Complete Binary Tree:
+
+We first need to visualize the array as a complete binary tree. For an array of size n, the root is at index 0, the left child of an element at index i is at 2i + 1, and the right child is at 2i + 2.
+Visualize-the-array-as-a-complete-binary-tree
+
+
+## Step 2: Build a Max Heap:
+
+
+Heapify-Binary-Tree-4.webpHeapify-Binary-Tree-4.webp.
+
+
+## Step 3: Sort the array by placing largest element at end of unsorted array.
+
+Remove-from-Max-Heap-2.webpRemove-from-Max-Heap-2.webp
+In the illustration above, we have shown some steps to sort the array. We need to keep repeating these steps until there’s only one element left in the heap.
+
+## Output
+
+Sorted array is:
+
+2 3 4 5 8 9 10 
+
+# Complexity Analysis of Heap Sort
+
+## Time Complexity:
+ O(n log n)
+
+## Auxiliary Space:
+ O(log n)
+
+due to the recursive call stack. However, auxiliary space can be O(1) for iterative implementation.
+
+# Important points about Heap Sort:
+
+An in-place algorithm.
+Its typical implementation is not stable but can be made stable (See this)
+Typically 2-3 times slower than well-implemented QuickSort. The reason for slowness is a lack of locality of reference.
+
+
+
+
