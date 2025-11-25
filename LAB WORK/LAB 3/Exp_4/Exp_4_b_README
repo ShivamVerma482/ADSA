@@ -1,1 +1,125 @@
+# B-Tree Insert and Delete Operations
+
+This document explains the concepts and operations of a B-Tree, focusing on insertion and deletion, and is intended to accompany a program that implements these operations using functions.
+
+---
+
+## Introduction
+
+A **B-Tree** is a self-balancing **M-way search tree** commonly used in databases and file systems.
+It is optimized for systems that read and write large blocks of data.
+Each node in a B-Tree can contain multiple keys and multiple children, making it different from a binary search tree.
+
+---
+
+## Key Properties of a B-Tree
+
+1. All leaves appear at the same level.
+2. Each node can contain a maximum of `2*T - 1` keys, where `T` is the minimum degree of the tree.
+3. Every internal node with `n` keys has `n+1` children.
+4. Keys within a node are stored in sorted order.
+5. The tree is balanced: the path from root to any leaf has the same length.
+
+---
+
+## Operations in the B-Tree
+
+### 1. Creation
+
+* Initially, the B-Tree is empty.
+* Nodes are dynamically created as keys are inserted.
+
+---
+
+### 2. Insertion
+
+Insertion ensures the B-Tree properties are maintained:
+
+1. Locate the correct leaf node where the new key should be inserted.
+2. If the node is not full, insert the key in sorted order.
+3. If the node is full:
+
+   * Split the node into two nodes.
+   * Promote the middle key to the parent node.
+4. Recursively apply splits upwards if necessary.
+5. If the root is split, create a new root.
+
+---
+
+### 3. Deletion
+
+Deletion in a B-Tree handles several scenarios to maintain balance:
+
+1. If the key is in a **leaf node**, remove it directly.
+2. If the key is in an **internal node**:
+
+   * Replace it with its **predecessor** or **successor** key.
+   * Recursively delete the predecessor/successor.
+3. If a node has fewer than `T-1` keys after deletion:
+
+   * Borrow a key from a sibling node.
+   * Or merge with a sibling node.
+4. Ensure all nodes satisfy minimum and maximum key constraints after each deletion.
+
+---
+
+## B-Tree Node Structure
+
+Each node contains:
+
+| Field        | Description                          |
+| ------------ | ------------------------------------ |
+| `keys[]`     | Array of stored keys                 |
+| `children[]` | Pointers to child nodes              |
+| `n`          | Current number of keys               |
+| `leaf`       | Flag indicating whether node is leaf |
+
+---
+
+## Traversal
+
+Traversal allows viewing the B-Tree structure:
+
+* **Inorder Traversal**: Left child → Key → Right child (recursive)
+* This outputs keys in **sorted order**.
+
+---
+
+## Example
+
+### Insert Sequence
+
+```
+Insert: 10, 20, 5, 6, 12, 30, 7, 17
+```
+
+### Stepwise Overview
+
+| Step | Key Inserted | Action                       |
+| ---- | ------------ | ---------------------------- |
+| 1    | 10           | Insert into root             |
+| 2    | 20           | Insert into root             |
+| 3    | 5            | Insert into root             |
+| 4    | 6            | Root full → Split            |
+| 5    | 12           | Insert into appropriate node |
+| 6    | 30           | Insert into appropriate node |
+| 7    | 7            | Insert → Rebalance if needed |
+| 8    | 17           | Insert → Split as required   |
+
+---
+
+## Advantages of B-Trees
+
+* Efficient search, insert, and delete operations.
+* Well-suited for **disk storage** systems.
+* Maintains balance automatically.
+* Reduces the number of disk reads in large datasets.
+
+---
+
+## Conclusion
+
+A B-Tree is a highly efficient, balanced multi-way search tree.
+Insertion and deletion operations rely on splitting, merging, and key redistribution to maintain its properties.
+The concepts described here are essential to understand a program implementing B-Tree insert and delete functions.
 
