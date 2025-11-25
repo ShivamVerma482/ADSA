@@ -1,0 +1,196 @@
+Below is the **clean README-style content**, written only in headings and paragraphs (plus optional tables/diagrams), with **no author, no project structure, no chat-style formatting**.
+You can directly paste it into a GitHub README.md.
+
+---
+
+# Ellipsoid Algorithm
+
+A geometric iterative method for testing the feasibility of a Linear Programming (LP) system of inequalities.
+
+## Introduction
+
+The Ellipsoid Algorithm is an iterative optimization and feasibility-testing method that uses ellipsoids to progressively enclose and shrink the search region of a linear programming problem. Instead of examining vertices or edges of the polytope, the algorithm maintains a sequence of ellipsoids that always contain the feasible region. Each iteration reduces the volume of the ellipsoid until either a feasible point is found or the region becomes too small to contain any solutions.
+
+This algorithm is historically important because it was the first polynomial-time algorithm for linear programming, although it is usually slower in practice than interior point methods or the simplex method.
+
+---
+
+## Purpose of the Algorithm
+
+The algorithm’s primary goal is to determine whether a system of linear inequalities is feasible:
+
+```
+Ax ≤ b
+```
+
+It can also be adapted to solve linear programs by combining feasibility tests and objective function adjustments. The educational version focuses purely on feasibility testing.
+
+---
+
+## Problem Definition
+
+Given a set of m inequalities in n variables:
+
+```
+a₁ᵀx ≤ b₁  
+a₂ᵀx ≤ b₂  
+⋮  
+aₘᵀx ≤ bₘ
+```
+
+The task is to determine if there exists an x that satisfies all constraints simultaneously.
+
+---
+
+## Geometric Intuition
+
+The algorithm encloses the (unknown) feasible region within a large initial ellipsoid. In every iteration:
+
+1. A center point of the current ellipsoid is tested.
+2. If the center violates a constraint, that constraint provides a *separating hyperplane*.
+3. The ellipsoid is updated to a smaller ellipsoid that still contains the intersection of the current ellipsoid and the half-space defined by the separating hyperplane.
+4. The volume of the ellipsoid shrinks, guaranteeing progress.
+
+The repeated shrinking ensures that, within a polynomial number of iterations, the algorithm can identify feasibility or infeasibility.
+
+---
+
+## What is an Ellipsoid?
+
+An ellipsoid in n dimensions can be represented as:
+
+```
+E = { x ∈ ℝⁿ : (x – c)ᵀ P⁻¹ (x – c) ≤ 1 }
+```
+
+Where:
+
+* c is the center of the ellipsoid
+* P is a symmetric positive definite matrix describing its shape
+
+The volume of an ellipsoid is proportional to √det(P), which is why shrinking P leads to volume reduction.
+
+---
+
+## Iterative Procedure
+
+### Step 1: Initialization
+
+Choose an initial ellipsoid that is guaranteed to contain the entire feasible region.
+This ellipsoid is typically chosen large enough to cover the expected solution bounds.
+
+### Step 2: Feasibility Check
+
+Evaluate the center c of the current ellipsoid.
+
+* If c satisfies all constraints, the system is feasible.
+* If c violates one or more constraints, select a violated inequality:
+
+```
+aᵢᵀc > bᵢ
+```
+
+This inequality defines a separating hyperplane between the center and the feasible region.
+
+### Step 3: Ellipsoid Update
+
+Construct a new, smaller ellipsoid that contains the half-ellipsoid on the feasible side of the separating hyperplane.
+
+A simplified form of the update is:
+
+```
+c_new = c – (1/(n+1)) * (P aᵢ / √(aᵢᵀ P aᵢ))
+P_new = (n²/(n² – 1)) * (P – (2/(n+1)) * (P aᵢ aᵢᵀ P)/(aᵢᵀ P aᵢ))
+```
+
+This ensures the new ellipsoid:
+
+* contains the feasible half-space
+* has reduced volume
+* moves its center toward the feasible region
+
+### Step 4: Repeat
+
+Continue iterating until:
+
+* a feasible point is found, or
+* the ellipsoid becomes extremely small, indicating infeasibility
+
+---
+
+## Volume Shrinkage
+
+A key property of the algorithm is that the volume of the ellipsoid decreases by a fixed ratio in every iteration.
+
+A simplified illustration:
+
+| Iteration | Ellipsoid Volume (relative) |
+| --------- | --------------------------- |
+| Initial   | 1.0                         |
+| After 1   | ~0.7                        |
+| After 2   | ~0.49                       |
+| After k   | (0.7)ᵏ                      |
+
+This guaranteed shrinking makes the algorithm polynomial time.
+
+---
+
+## Conceptual Diagram (Text Illustration)
+
+```
+Initial Ellipsoid (large):
+     ________
+   /          \
+  |  Feasible   |
+  |   Region    |
+   \__________/
+
+Iteration:
+Center tested → constraint violated → half removed
+
+Next Ellipsoid (smaller):
+    _____
+  /       \
+ | Region  |
+  \_____ /
+```
+
+The ellipsoids gradually contract around a feasible point or collapse entirely.
+
+---
+
+## Advantages
+
+* First polynomial-time method for linear programming
+* Simple geometric intuition
+* Works for feasibility and optimization (with modifications)
+* Useful in theoretical complexity analysis
+
+---
+
+## Limitations
+
+* Slower in practice than interior point methods
+* Requires numerical stability and careful matrix updates
+* Needs a valid initial ellipsoid that contains the feasible region
+* Typically not used in modern industrial solvers
+
+---
+
+## Applications
+
+Although not widely used in practice, the Ellipsoid Algorithm has strong theoretical value. It contributed to breakthroughs in:
+
+* Polynomial-time complexity of linear programming
+* Convex optimization theory
+* Solving large-scale feasibility problems
+* Proving theoretical bounds in combinatorial optimization
+
+---
+
+## Conclusion
+
+The Ellipsoid Algorithm offers an elegant geometric approach to testing feasibility of linear inequalities. By shrinking ellipsoids around the feasible region and using separating hyperplanes when constraints are violated, it ensures efficient progress toward a decision. While not the fastest practical method today, its theoretical importance in optimization and computational complexity remains significant.
+
+---
+
