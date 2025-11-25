@@ -105,31 +105,6 @@ By completing these labs, I achieved:
 
 ---
 
-## 📌 How to Use This Repository
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/<your-username>/ADSA-Lab-Work.git
-```
-
-2. Navigate to a lab folder, e.g., `Graphs/Dijkstra`
-3. Compile the C program:
-
-```bash
-gcc dijkstra.c -o dijkstra
-```
-
-4. Run the program and follow the input instructions:
-
-```bash
-./dijkstra
-```
-
-5. Check the README inside each folder for **algorithm explanation, examples, and complexity analysis**
-
----
-
 ## 🌟 Future Enhancements
 
 * Include **visualizations** for tree and graph operations using Python/JavaScript
@@ -161,7 +136,3 @@ This repository is a **personal lab work collection**, but contributions are wel
 This repository is a **comprehensive showcase of Advanced Data Structures and Algorithms lab work**, covering everything from **classic data structures to advanced optimization algorithms**. It’s designed for **learning, reference, and performance analysis**, and can serve as a **resource for students and programmers** preparing for complex problem-solving and coding challenges.
 
 ---
-
-If you want, I can also create a **more interactive GitHub README with badges, table of contents, and collapsible sections** for each lab topic so it looks visually appealing and professional.
-
-Do you want me to do that?
