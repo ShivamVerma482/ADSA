@@ -1,8 +1,3 @@
-Below is the **README content** you can directly put into your GitHub repository for the BST operations program.
-(As requested: **no code**, **no author**, **no project structure**, **simple headings + paragraphs + optional tables**, and **not in ChatGPT answer formatting**.)
-
----
-
 # Binary Search Tree Operations
 
 This document explains how Binary Search Tree operations are implemented using functions. The program performs creation, insertion, deletion, and traversal operations on a BST with integer values.
