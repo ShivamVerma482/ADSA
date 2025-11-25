@@ -1,9 +1,3 @@
-Below is the **clean README-style content**, formatted only with headings, paragraphs, lists, tables, and diagrams.
-No author, no project structure, no ChatGPT-style commentary.
-You can copy–paste directly into a GitHub README.md.
-
----
-
 # Interior Point Method (IPM)
 
 A minimal educational algorithm for solving simple linear optimization problems.
