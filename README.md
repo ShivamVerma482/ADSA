@@ -6,7 +6,7 @@
 
 ---
 
-## 🚀 Overview
+##  Overview
 
 Welcome to my **ADSA Lab Work** repository! This repository contains all my implementations, experiments, and analysis of advanced data structures and algorithms. The primary goal of these lab exercises is to:
 
