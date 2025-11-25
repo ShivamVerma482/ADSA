@@ -1,3 +1,7 @@
+//Functions	to	perform	the	following	operations	on	
+//Binary	Search	Tree:	i)	Creation	ii)	Insertion	iii)	Deletion	iv)	Traversal	(Inorder,	
+//Preorder,	Postorder)	
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -146,3 +150,4 @@ int main() {
     }
     return 0;
 }
+
