@@ -1,6 +1,6 @@
 # Advanced Data Structures & Algorithms (ADSA) Lab Work
 
-### MTech CSE, IIIT Bhubaneshwar
+##### MTech CSE, IIIT Bhubaneshwar
 
 ## 🚀 Overview
 
