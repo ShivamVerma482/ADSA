@@ -196,8 +196,3 @@ Fibonacci Heaps represent a sophisticated priority queue structure optimized for
 
 ---
 
-If you want, I can also generate:
-
-* A version with pseudocode
-* A binomial heap README
-* A combined “heaps comparison” table or diagram
