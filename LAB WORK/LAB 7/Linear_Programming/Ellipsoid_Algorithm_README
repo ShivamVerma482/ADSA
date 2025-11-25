@@ -1,8 +1,3 @@
-Below is the **clean README-style content**, written only in headings and paragraphs (plus optional tables/diagrams), with **no author, no project structure, no chat-style formatting**.
-You can directly paste it into a GitHub README.md.
-
----
-
 # Ellipsoid Algorithm
 
 A geometric iterative method for testing the feasibility of a Linear Programming (LP) system of inequalities.
